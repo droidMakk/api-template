@@ -11,7 +11,14 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "watch": "rollup -w -c rollup.config.js",
-    "mon:app": "nodemon"
+    "predocker": "npm run build",
+    "docker": "docker build .",
+    "docker:beta": "npm run docker -- -t api-template:beta",
+    "predocker:runbeta": "npm run docker:beta",
+    "docker:runbeta": "docker run --env-file .env -p 8080:8080 api-template:beta",
+    "image": "docker run -d ",
+    "nodemon": "nodemon",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "api",
@@ -46,9 +53,15 @@
     "@types/express": "^4.17.1",
     "@types/helmet": "0.0.44",
     "@types/morgan": "^1.7.37",
+    "husky": "^3.0.5",
     "nodemon": "^1.19.2",
     "rollup": "^1.21.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sucrase": "^2.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run build"
+    }
   }
 }
