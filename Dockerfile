@@ -9,7 +9,6 @@ ENV PORT ${PORT:-8000}
 
 
 COPY . ./
-COPY .env.example ./.env
 RUN npm install pm2 -g
 RUN npm ci --only=production
 

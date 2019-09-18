@@ -1,6 +1,6 @@
 {
   "name": "api-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "api implementation using rollup with express and postgraphile",
   "repository": {
     "directory": "api-template",
