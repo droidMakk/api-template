@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "paths": {
+            "app": [ "src/", "src/*", "src" ],
+            "app/*": [ "src/", "src/*", "src" ],
+            "handlers": [ "src/handlers/*", "src/handlers" ],
+            "handlers/*": [ "src/handlers/*", "src/handlers" ],
+            "helpers": [ "src/helpers/*", "src/helpers" ],
+            "helpers/*": [ "src/helpers/*", "src/helpers" ],
+            "middleware": [ "src/middleware/*", "src/middleware" ],
+            "middleware/*": [ "src/middleware/*", "src/middleware" ],
+            "models": [ "src/models/*", "src/models" ],
+            "models/*": [ "src/models/*", "src/models" ],
+            "routes": [ "src/routes/*", "src/routes" ],
+            "routes/*": [ "src/routes/*", "src/routes" ],
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*",
+        "./build",
+        "./rollup.*.js"
+    ]
+}

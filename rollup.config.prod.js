@@ -1,5 +1,6 @@
-import sucrase from 'rollup-plugin-sucrase';
 import resolve from 'rollup-plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
+import { uglify } from 'rollup-plugin-uglify';
 
 export default [
     {
@@ -14,12 +15,12 @@ export default [
             exclude: 'node_modules/**'
         },
         plugins: [
-            resolve({ extensions: ['.js', '.ts'], modulesOnly: true }),
-            sucrase({
-                exclude: ['node_modules/**'],
-                transforms: ['typescript'],
-                enableLegacyBabel5ModuleInterop: true
-            })
+            resolve({
+                extensions: ['.js', '.ts'],
+                modulesOnly: true
+            }),
+            typescript(),
+            uglify({ sourcemap: false })
         ]
     }
 ]
