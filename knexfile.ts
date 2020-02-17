@@ -27,7 +27,7 @@ const local = {
 const dev = {
     client: 'pg',
     connection,
-    migrations: {
+    migrations: {   
         tablename: 'knex_migrations',
         directory: `${__dirname}/db/migrations`
     },
