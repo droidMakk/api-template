@@ -1,14 +1,17 @@
-import express from 'express';
-import { Request, Response } from "express";
+import express, { Request, Response } from 'express';
 import morgan from 'morgan';
-import useGraphile from './postgraphile';
 
+import logger from 'middleware/logger';
+import authRouter from 'routes/authrouter';
+
+import useGraphile from './postgraphile';
 
 // LOADING CONFIGS
 require('dotenv-safe').config();
 
 const app = express();
-const port:any = process.env.PORT || 8000;
+app["logger"] = logger;
+const port: any = process.env.PORT || 8000;
 
 const reqHandler = (req: Request, res: Response) => {
     res.send('RECIEVED');
@@ -17,9 +20,7 @@ const reqHandler = (req: Request, res: Response) => {
 if (process.env.ENV === "dev") {
     const morganConfig = ":remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms";
     app.use(morgan(morganConfig));
-}
-
-if (process.env.ENV === "prod") {
+} else {
     app.use(morgan("tiny"))
 }
 
@@ -27,9 +28,10 @@ app.use(useGraphile());
 
 app.get('/', reqHandler);
 
-app.listen(port, () => {
+server.listen(port, () => {
     const message = [
-        ['ENV', process.env.ENV],
+        ['Socket is Active'],
+        ['ENV', process.env.NODE_ENV],
         ['PORT', port],
     ]
 
