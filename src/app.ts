@@ -28,7 +28,7 @@ app.use(useGraphile());
 
 app.get('/', reqHandler);
 
-server.listen(port, () => {
+app.listen(port, () => {
     const message = [
         ['Socket is Active'],
         ['ENV', process.env.NODE_ENV],
