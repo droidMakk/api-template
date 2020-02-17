@@ -28,4 +28,3 @@ Make sure the following checklist is done.
 - postgresql ( database )
 - nodejs ( >= v8.10.0 )
 - npm ( >= v.3.5.2 )
-- rabbitmq (  >= v3.7.23 )
