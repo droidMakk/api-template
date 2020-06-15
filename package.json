@@ -82,7 +82,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run build:dev"
+      "pre-push": "npm run build"
     }
   }
 }
