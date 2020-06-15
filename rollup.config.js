@@ -1,6 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
     input: 'src/app.ts',
@@ -19,7 +19,9 @@ export default {
             modulesOnly: true
         }),
         typescript(),
-        uglify()
+        terser({
+            ecma: 6
+        })
     ],
     moduleContext: {
         [require.resolve('lodash')]: 'window'

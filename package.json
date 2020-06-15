@@ -1,6 +1,6 @@
 {
   "name": "api-template",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "API With Knex and POSTGRAPHILE",
   "repository": {
     "directory": "api-template",
@@ -9,10 +9,9 @@
   },
   "main": "build/app.js",
   "scripts": {
-    "build:prod": "rollup -c rollup.config.prod.js",
-    "build:dev": "rollup -c rollup.config.dev.js",
-    "watch": "rollup -w -c rollup.config.dev.js",
-    "predocker": "npm run build:prod",
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -w -c rollup.config.js",
+    "predocker": "npm run build",
     "docker": "docker build .",
     "docker:beta": "npm run docker -- -t api-template:beta",
     "predocker:runbeta": "npm run docker:beta",
@@ -24,7 +23,7 @@
     "postinstall": "npm run pm2:dev",
     "app:dev": "concurrently \"npm:watch\" \"npm:nodemon\"",
     "pm2:dev": "pm2 start ./build/app.js --name \"API\"",
-    "predeploy:dev": "npm run build:dev"
+    "predeploy:dev": "npm run build"
   },
   "keywords": [
     "api",
@@ -64,11 +63,11 @@
     "@types/dotenv-safe": "^5.0.3",
     "@types/express": "^4.17.1",
     "@types/helmet": "0.0.44",
-    "@types/morgan": "^1.7.37",
     "@types/jsonwebtoken": "^8.3.5",
     "@types/knex": "^0.16.1",
     "@types/lodash": "^4.14.146",
     "@types/mkdirp": "^0.5.2",
+    "@types/morgan": "^1.7.37",
     "@types/pg": "^7.11.2",
     "concurrently": "^5.0.0",
     "cross-env": "^6.0.3",
@@ -76,8 +75,8 @@
     "nodemon": "^1.19.2",
     "rollup": "^1.21.2",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.27.0",
-    "rollup-plugin-uglify": "^6.0.4",
     "ts-node": "^8.4.1",
     "typescript": "^3.7.2"
   },

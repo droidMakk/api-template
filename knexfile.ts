@@ -12,7 +12,7 @@ const connection = {
     port: DB_PORT,
 }
 
-const local = {
+const config = {
     client: 'pg',
     connection,
     migrations: {
@@ -24,16 +24,12 @@ const local = {
     }
 }
 
+const local = {
+    ...config
+}
+
 const dev = {
-    client: 'pg',
-    connection,
-    migrations: {   
-        tablename: 'knex_migrations',
-        directory: `${__dirname}/db/migrations`
-    },
-    seeds: {
-        directory: `${__dirname}/db/seeds`
-    }
+    ...config
 }
 
 const prod = {
@@ -42,4 +38,4 @@ const prod = {
     pool: { min: 2, max: 10 },
 }
 
-module.exports = { local, dev, prod }
+module.exports = { local, dev, prod, };
