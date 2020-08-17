@@ -1,6 +1,7 @@
 # API TEMPLATE
 
-> API 
+> API server with express and rollup for bundling.
+> Using optional typechecking using Typescript.
 
 To clone this repo
 ```shell
