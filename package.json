@@ -21,9 +21,8 @@
     "migrate": "knex migrate:latest",
     "newmigrate": "knex migrate:make -x ts ",
     "down": "knex migrate:down",
-    "postinstall": "npm run pm2:dev",
-    "app:dev": "concurrently \"npm:watch\" \"npm:nodemon\"",
-    "pm2:dev": "pm2 start ./build/app.js --name \"API\"",
+    "dev": "concurrently \"npm:watch\" \"npm:nodemon\"",
+    "pm2": "pm2 start ./build/app.js --name \"API\"",
     "predeploy:dev": "npm run build"
   },
   "keywords": [
