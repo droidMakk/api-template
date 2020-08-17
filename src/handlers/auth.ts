@@ -1,27 +1,13 @@
-import Users from 'models/users';
-import db from 'handlers/dbconnect';
+import db from 'helpers/database';
 
-export interface IAuthorizeCreds {
-    (username: string, password: string):Promise<{
-        err: any,
-        data: any
-    }>
-}
-
-const authorizeCreds: IAuthorizeCreds = async function(username, password){
-    let err = null, data = null, message = null;
+export const login = async function({username, password}){
+    let data = null, error = null;
     try {
-        
-        const dbres = await db<Users>('users').where('username', username);
-        console.info('DBRES',dbres);
+        const dbres = await db('users').where('username', username);
         data = dbres;
-    } catch (error) {
-        err = error;
+    } catch (err) {
+        err = { message: err.message };
     }
     
-    return { err, data, message }
+    return { data, error }
 }
-
-authorizeCreds('droidmakk','password');
-
-export default authorizeCreds;

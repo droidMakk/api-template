@@ -1,30 +1,34 @@
-## PRE-REQUISITES OF API
+# API TEMPLATE
 
-* Create user to restrict access to user table
-* User with basic access
+> API 
 
+To clone this repo
+```shell
+npx degit droidmakk/api-template
+```
 
- ## SCRIPTS
-```SQL
- -- create user
- CREATE USER dbadmin;
+## BOOTSTRAP DATABASE
+```sql
+-- create database
+create database your-app-dev;
 
- -- grant access
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO dbadmin;
+-- create user
+create user dbadmin with password 'some-password';
 
- -- restrict access
- REVOKE SELECT, INSERT, UPDATE, DELETE ON TABLE users FROM dbadmin;
+-- grant access
+grant select, update, delete on all tables in schema public to dbadmin;
+
+-- restrict access
+revoke select, update, delete on table users from dbadmin;
 
  -- reset password
- ALTER USER dbadmin WITH PASSWORD 'password';
+ alter user dbadmin with password 'some-other-password';
 ```
-restrict access to table
 
 
 ## MACHINE SETUP
+install the following in machine.
 
-Make sure the following checklist is done.
-
-- postgresql ( database )
-- nodejs ( >= v8.10.0 )
-- npm ( >= v.3.5.2 )
+- postgresql > 8.x
+- nodejs > 8.x
+- npm > 3.x

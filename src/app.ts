@@ -6,7 +6,8 @@ import helmet from 'helmet';
 import compression from 'compression';
 
 import logger from 'middleware/logger';
-import authRouter from 'routes/authrouter';
+
+import auth_router from 'routes/auth.router';
 
 import useGraphile from './postgraphile';
 
@@ -31,10 +32,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(compression());
 app.use(cors());
+app.use('/public', express.static("public"));
+
+app.use('/auth', auth_router);
 
 app.listen(port, () => {
     const message = [
-        ['Socket is Active'],
+        ['SERVER IS RUNNING'],
         ['ENV', process.env.NODE_ENV],
         ['PORT', port],
     ]

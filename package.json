@@ -1,7 +1,7 @@
 {
   "name": "api-template",
-  "version": "0.3.2",
-  "description": "API With KNEX and POSTGRAPHILE",
+  "version": "0.4.2",
+  "description": "API With KNEX, POSTGRES and POSTGRAPHILE",
   "repository": {
     "directory": "api-template",
     "type": "git",
@@ -37,7 +37,7 @@
   "author": {
     "email": "droidmakk@gmail.com",
     "name": "droidmakk",
-    "url": "https://droidmakk.github.io"
+    "url": "https://droidmakk.dev"
   },
   "license": "ISC",
   "dependencies": {
